@@ -13,7 +13,11 @@ export const createRequest = (options: UseAxiosRequestConfig): Promise<UseAxiosR
     const userid = options?.cookie?.userid || 0;
     const appid = 1005; // 该为设备id, 安卓、ios、桌面都不相同。
     const clienttime = Date.now();
-    const ip = options?.realIP || options?.ip || '';
+    // const ip = options?.realIP || options?.ip || '';
+    // const headers = { dfid, clienttime, mid };
+
+    const ip = '::1'
+    //  options?.realIP || options?.ip || '';
     const headers = { dfid, clienttime, mid };
 
     if (ip) {

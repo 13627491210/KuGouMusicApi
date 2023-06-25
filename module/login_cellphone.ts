@@ -42,6 +42,15 @@ export const useModule = (params: UseModuleParams, useAxios: UseAxios) => {
           res.cookie.push(`vip_type=${res.body.data?.vip_type || 0}`)
           res.cookie.push(`vip_token=${res.body.data?.vip_token || ''}`)
 
+          global.userid = res.body.data?.userid
+          global.vip_type = res.body.data?.vip_type
+          global.vip_token = res.body.data?.vip_token
+          global.cookie = {
+            userid: res.body.data?.userid,
+            vip_type: res.body.data?.vip_type,
+            vip_token: res.body.data?.vip_token,
+            ...getToken
+          }
           resolve(res);
           return;
         }

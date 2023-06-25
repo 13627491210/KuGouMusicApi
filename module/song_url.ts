@@ -5,8 +5,8 @@ import { mapToObject } from '../util/util';
 export const useModule = (params: UseModuleParams, useAxios: UseAxios) => {
   const dataMap = new Map();
   dataMap.set('hash', params?.hash || '');
-  dataMap.set('vipType', params?.cookie?.vip_type || params?.vipType || 0); // 该参数不影响url获取
-  dataMap.set('vipToken', params?.cookie?.vip_token || params?.vipToken || ''); // 该参数不影响url获取
+  dataMap.set('vipType', params?.cookie?.vip_type || global.vip_type || params?.vipType || 0); // 该参数不影响url获取
+  dataMap.set('vipToken', params?.cookie?.vip_token || global.vip_token || params?.vipToken || ''); // 该参数不影响url获取
   dataMap.set('behavior', 'play');
   dataMap.set('pid', 2);
   dataMap.set('cmd', 26);
@@ -21,7 +21,7 @@ export const useModule = (params: UseModuleParams, useAxios: UseAxios) => {
     encryptType: 'android',
     headers: { 'x-router': 'tracker.kugou.com' },
     encryptKey: true,
-    cookie: params?.cookie || {},
+    cookie: global.cookie || params?.cookie || {},
   });
 }
 
